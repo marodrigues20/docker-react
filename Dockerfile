@@ -11,6 +11,8 @@ COPY . .
 RUN npm run build
 
 FROM nginx 
+# Expose doesn't replace -p 80:80 in our local machine. However, AWS Elastic Beanstalk use it to expose the port
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
 
