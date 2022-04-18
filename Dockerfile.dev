@@ -1,0 +1,11 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install 
+
+# we don't need this after we created the volumens in our docker-compose.yml. But we gonna leave this here by reference.
+COPY . .  
+
+CMD ["npm", "run", "start"] 
